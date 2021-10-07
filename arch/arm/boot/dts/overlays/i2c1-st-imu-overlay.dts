@@ -1,0 +1,28 @@
+#include "i2c1-overlay.dts"
+
+/{
+	fragment@0 {
+		target = <&i2c_arm>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			ism330dlc: ism330dlc@6b {
+				compatible = "st,ism330dlc";
+				reg = <0x6b>;
+				status = "okay";
+				interrupt-parent = <&gpio>;
+				interrupts = <23 0x4>;
+			};
+
+			iis2mdc: iis2mdc@1e {
+				compatible = "st,iis2mdc_magn";
+				reg = <0x1e>;
+				status = "okay";
+				interrupt-parent = <&gpio>;
+				interrupts = <22 0x4>;
+			};
+		};
+	};
+};
