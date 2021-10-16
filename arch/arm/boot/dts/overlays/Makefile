@@ -72,6 +72,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
 	i2c1.dtbo \
 	i2c1-bcm2708.dtbo \
 	i2c1-st-imu.dtbo \
+	i2c1-st-mag.dtbo \
 	i2c3.dtbo \
 	i2c4.dtbo \
 	i2c5.dtbo \
@@ -146,6 +147,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
 	spi-gpio35-39.dtbo \
 	spi-gpio40-45.dtbo \
 	spi-rtc.dtbo \
+	spi0-st-imu.dtbo \
 	spi0-cs.dtbo \
 	spi0-hw-cs.dtbo \
 	spi1-1cs.dtbo \

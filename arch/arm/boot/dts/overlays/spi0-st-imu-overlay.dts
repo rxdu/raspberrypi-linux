@@ -1,0 +1,43 @@
+/dts-v1/;
+/plugin/;
+
+
+/ {
+	compatible = "brcm,bcm2835";
+
+    /* disable spi-dev for spi0.0 */
+	fragment@0 {
+	target = <&spidev0>;
+		__overlay__ {
+			status = "disabled";
+		};
+    };
+
+	/* cs pins for spi0.0 */
+	fragment@1 {
+		target = <&spi0_cs_pins>;
+		__overlay__ {
+			brcm,pins = <8 7>;
+		};
+	};
+
+	fragment@2 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
+			status = "okay";
+
+			ism330dlc: ism330dlc@0 {
+				status = "okay";
+				compatible = "st,ism330dlc";
+				spi-max-frequency = <125000000>;
+				reg = <0>;
+				interrupt-parent = <&gpio>;
+				interrupts = <23 0x4>;
+			};
+		};
+	};
+};
